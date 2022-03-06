@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.horizontal-divider {
+  height: 1px;
+  background-color: lightgray;
+  width: 100%;
+}

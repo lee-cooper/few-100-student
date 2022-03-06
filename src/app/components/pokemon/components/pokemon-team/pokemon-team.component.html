@@ -1,0 +1,29 @@
+<span class="component-header">Pokemon Team</span>
+<span class="team-constraints">Select up to (6) Pokemon</span>
+<div class="pokemon-team">
+  <!-- 
+      *ngFor
+
+      Use the NgFor directive to present a list of items.
+
+      Consider the below code
+
+      <app-pokemon-team-member *ngFor="let teamMember of currentPokemonTeam"
+                           [pokemonTeamMember]="teamMember"
+                           (removeFromTeam)="removePokemonFromTeam($event)"></app-pokemon-team-member>
+
+      "*ngFor="let teamMember of currentPokemonTeam" will do the following
+
+      - Store each teamMember in the currentPokemonTeam collection in the local teamMember looping variable
+      - Make each teamMember available to the templated HTML for each iteration
+      - Translate "let teamMember of currentPokemonTeam" into an <ng-template> around the host element
+      - Repeat the <ng-template> for each item in the list
+
+      See *ngFor - https://angular.io/guide/built-in-directives#listing-items-with-ngfor
+
+      
+     -->
+  <app-pokemon-team-member *ngFor="let teamMember of currentPokemonTeam"
+                           [pokemonTeamMember]="teamMember"
+                           (removeFromTeam)="removePokemonFromTeam($event)"></app-pokemon-team-member>
+</div>

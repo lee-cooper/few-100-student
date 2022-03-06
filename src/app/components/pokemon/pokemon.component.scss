@@ -1,0 +1,13 @@
+.pokemon-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.pokemon-team-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

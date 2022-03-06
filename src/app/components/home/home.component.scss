@@ -1,0 +1,61 @@
+.home-header {
+  display: grid;
+  place-items: center;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  span {
+    font-size: 1.3rem;
+  }
+}
+
+.tiles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15rem;
+  min-height: 15rem;
+  padding: 0.5rem;
+  border: 1px solid lightgray;
+  box-shadow: 0 0 7px 0px lightgrey;
+  text-align: center;
+
+  mat-icon {
+    width: 7rem;
+    height: 7rem;
+    font-size: 7rem;
+  }
+}
+
+a > .tile:hover,
+a:focus {
+  transform: scale(1.01);
+
+  mat-icon[data-content="wb_sunny"] {
+    color: #eeca00;
+  }
+
+  mat-icon[data-content="task"] {
+    color: purple;
+  }
+
+  mat-icon[data-content="pokemon"] {
+    color: red;
+  }
+
+  mat-icon[data-content="science"] {
+    color: green;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

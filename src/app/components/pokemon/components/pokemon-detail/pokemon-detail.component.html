@@ -1,0 +1,53 @@
+<span class="component-header">Pokemon Detail</span>
+<section class="pokemon-detail">
+  <!-- 
+    *ngIf
+
+    A structural directive that conditionally includes a template based on the value of 
+    an expression coerced to Boolean. When the expression evaluates to true, Angular 
+    renders the template provided in a then clause, and when false or null, Angular 
+    renders the template provided in an optional else clause. The default template 
+    for the else clause is blank.
+
+    In this example, as as long as 'selectedPokemon' is not undefined (or null), then
+    the div below will be rendered. Otherwise, it will not be shown.
+
+    See *ngIf - https://angular.io/api/common/NgIf
+   -->
+  <div *ngIf="selectedPokemon != undefined"
+       class="wrapper">
+
+    <!-- 
+      Text Interpolation
+
+      Text interpolation lets you incorporate dynamic string values into your HTML templates. 
+      Use interpolation to dynamically change what appears in an application view.
+
+      In this example, pokemon details are being displayed, with the optional chaining operator
+      being used to prevent undefined values
+
+      See Text Interpolation - https://angular.io/guide/interpolation
+      See Optional Chaining Operator -  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+     -->
+    <h2>#{{selectedPokemon?.id}} {{selectedPokemon?.name}}</h2>
+    <img src="{{selectedPokemon?.image}}"
+         alt="Front sprite of {{selectedPokemon?.name}}" />
+    <div class="pokemon-stats">
+      <div class="pokemon-stat">
+        <span>Height:</span>
+        <span class="pokemon-type">{{selectedPokemon?.height}}</span>
+      </div>
+      <div class="pokemon-stat">
+        <span>Type:</span>
+        <span class="pokemon-type">{{selectedPokemon?.type}}</span>
+      </div>
+      <div class="pokemon-stat">
+        <span>Weight:</span>
+        <span class="pokemon-type">{{selectedPokemon?.weight}}</span>
+      </div>
+    </div>
+    <div class="pokemon-actions">
+      <button (click)="addPokemonToTeam(selectedPokemon)">Add to Team</button>
+    </div>
+  </div>
+</section>

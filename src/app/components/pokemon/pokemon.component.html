@@ -1,0 +1,65 @@
+<!-- 
+  After creating a component, it can be used in HTML using the component's selector
+
+  Consider the below code:
+
+  <app-pokemon-header></app-pokemon-header>
+
+  The pokemon header component specifies the selector's name which is used to display
+  it in the HTML.
+
+  @Component({
+    selector: 'app-pokemon-header', <------------------ this is the selector
+    templateUrl: './pokemon-header.component.html',
+    styleUrls: ['./pokemon-header.component.scss']
+  })
+ -->
+<app-pokemon-header></app-pokemon-header>
+<div class="pokemon-wrapper">
+  <!-- 
+    Parent-to-child component property binding
+    - Property binding in Angular helps you set values for properties of HTML elements or directives. 
+    - Use property binding to do things such as toggle button functionality, set paths programmatically, and share values between components.
+
+    Consider the below code:
+
+    <app-pokemon-detail [selectedPokemon]="pokemonDetail$ | async"></app-pokemon-detail>
+
+    - the 'pokemonDetails$' observable property on the parent component is bound to the 
+      'selectedPokemon' property on the child component. The value held on the parent is 
+      passed down to the child.
+    - Additionally, the pipe '|' and the 'async' subscribes to the latest value from the 'pokemonDetails$'
+      observable on the parent component and return the latest value emitted. When the component is destroyed,
+      the observable is automatically unsubscribed, preventing memory leaks.
+
+    Resources:
+    - See Async pipe -> https://angular.io/api/common/AsyncPipe
+    - See Angular property binding -- https://angular.io/guide/property-binding#binding-to-a-property
+  -->
+  <app-pokemon-detail [selectedPokemon]="pokemonDetail$ | async"
+                      (addToTeam)="addPokemonToTeam($event)"></app-pokemon-detail>
+
+  <!-- 
+    Child-to-parent event binding
+    - Event binding allows you to listen to and respond to events. 
+    - Custom event bindings can be created to allow the child component to communicate with the parent
+    
+    Consider the below code:
+
+    (emitSelectedPokemon)="requestPokemonDetail($event)"
+
+    - Given the parent is listening for an event of 'emitSelectedPokemon' 
+    - When the child component emits an event of 'emitSelectedPokemon'
+    - Then the 'requestPokemonDetail' function on the parent component will be called
+      - The contents of the event are stored in the '$event' argument, and are passed to the parent function
+      - NOTE: There will not always be an '$event' argument
+
+    - See Event binding -> https://angular.io/guide/event-binding#custom-events-with-eventemitter 
+  -->
+  <app-pokemon-list [pokemonList]="pokemonList$ | async"
+                    (emitSelectedPokemon)="requestPokemonDetail($event)"></app-pokemon-list>
+</div>
+<div class="pokemon-team-wrapper">
+  <app-pokemon-team [currentPokemonTeam]="currentPokemonTeam"
+                    (removeFromTeam)="removePokemonFromTeam($event)"></app-pokemon-team>
+</div>
